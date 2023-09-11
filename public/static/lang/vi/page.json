@@ -1,0 +1,33 @@
+{
+  "selectLayout": "Chọn bố cục",
+  "selectBooth": "Chọn gian hàng",
+
+  "Date": "Ngày",
+  "TransactionCode": "Mã giao dịch",
+  "Layout": "Bố cục",
+  "Theme": "Chủ đề",
+  "QuantityOfPrint": "Số lượng in",
+  "Amount": "Giá trị",
+  "Voucher": "Voucher",
+  "ShootingMode": "Chế độ chụp",
+
+  "Device": "Thiết bị",
+  "Location": "Địa điểm",
+  "PriceTable": "Bảng giá",
+  "Status": "Trạng thái",
+
+  "NewTitle": "Thêm mới",
+  "EditTitle": "Chỉnh sửa",
+
+  "Store": "Cửa hàng",
+  "StoreName": "Cửa hàng",
+  "Province": "Tỉnh / TP",
+  "District": "Quận / Huyện",
+  "Wards": "Phường / Xã",
+  "Address": "Địa chỉ",
+
+  "BoothId": "Mã giai hàng",
+  "BoothName": "Tên giai hàng",
+
+  "Account": "Tài khoản"
+}

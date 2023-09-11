@@ -1,0 +1,36 @@
+{
+  "ok": "ok",
+  "noData": "Không có dữ liệu",
+  "next": "sau",
+  "prev": "trước",
+  "Next": "Sau",
+  "Prev": "Trước",
+  "page": {
+    "dashboard": "Thống kê",
+    "transaction": "Giao dịch",
+    "store": "Cửa hàng",
+    "device": "Thiết bị",
+    "booth": "Gian hàng",
+    "layout": "Bố cục",
+    "theme": "Chủ đề",
+    "location": "Địa điểm",
+    "user": "Người dùng",
+    "guide": "Hướng dẫn"
+  },
+  "layout": {
+    "profile": "Thông tin",
+    "language": "Ngôn ngữ",
+    "logout": "Đăng xuất"
+  },
+  "Search": "Tìm kiếm",
+  "Select": "Chọn",
+  "CreateNew": "Thêm mới",
+  "NewTitle": "Thêm mới",
+  "EditTitle": "Chỉnh sửa",
+  "Cancel": "Hủy",
+  "Title": "Tiêu đề",
+  "Confirm": "Xác nhận",
+  "AreYouConfirm": "Bạn xác nhận",
+  "No": "Không",
+  "Yes": "Có"
+}
