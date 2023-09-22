@@ -24,13 +24,7 @@ export default function LeftMenu() {
     <ul className="left-menu">
       <Menu vertical={true} fluid={true}>
         {menus.map((item, index) => (
-          <MenuItem
-            key={index}
-            icon={item.icon}
-            active={true}
-            link={true}
-            path={item.path}
-          />
+          <MenuItem key={index} icon={item.icon} link={true} path={item.path} />
         ))}
       </Menu>
     </ul>

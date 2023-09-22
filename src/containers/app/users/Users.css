@@ -20,3 +20,28 @@
     margin-top: 5px;
     margin-bottom: 5px;
 }
+ 
+.segment {
+    width: 600px;
+}
+.add-input {
+    display: flex;
+}
+
+.add-input .add-label{
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+.add-input .item {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.add-button {
+    margin-left: 10px;
+}
+
+.add-input .item .error-message {
+    color: red;
+}

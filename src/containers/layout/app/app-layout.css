@@ -13,7 +13,7 @@
 }
 
 .left-menu-section {
-  width: 67px;
+  width: 100px;
   flex-shrink: 0;
   border-right: 1px solid #e5e7eb;
 }
