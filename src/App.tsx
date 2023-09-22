@@ -25,7 +25,6 @@ const router = createBrowserRouter([
 
 function App() {
   useTranslation(I18nNamespace.COMMON);
-
   return (
     <ReduxProvider store={store}>
       <PersistGate loading={null} persistor={persistor}>

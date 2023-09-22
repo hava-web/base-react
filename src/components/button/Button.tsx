@@ -6,15 +6,20 @@ import {
 import cx from 'classnames';
 import './button.css';
 
-export type Props = SUIButtonProps & {};
+export type Props = SUIButtonProps & {
+  colorWhite?: boolean;
+  margin?: boolean;
+};
 
-const Button: FC<Props> = ({ className, ...rest }) => (
+const Button: FC<Props> = ({ className, margin, colorWhite, ...rest }) => (
   <SUIButton
     {...rest}
     className={cx(
       'pb-button',
       {
+        'pb-button-white': colorWhite,
         'pb-button-disabled': !!rest?.disabled,
+        'pb-button-margin': margin,
       },
       className,
     )}

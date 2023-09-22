@@ -8,11 +8,21 @@ import './app-layout.css';
 const Dashboard = lazy(() => import('containers/app/dashboard/Dashboard'));
 const Guide = lazy(() => import('containers/app/other/guide/Guide'));
 const Page404 = lazy(() => import('containers/app/other/404/404'));
+const TodoList = lazy(() => import('containers/app/todolist/TodoList'));
+const Users = lazy(() => import('containers/app/users/Users'));
 
 const routes = [
   {
     path: AppRouteConst.HOME,
     element: <Dashboard />,
+  },
+  {
+    path: AppRouteConst.TODO,
+    element: <TodoList />,
+  },
+  {
+    path: AppRouteConst.USERS,
+    element: <Users />,
   },
   {
     path: AppRouteConst.DASHBOARD,

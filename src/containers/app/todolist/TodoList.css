@@ -1,0 +1,15 @@
+.todo_list {
+    display: flex;
+    margin-top: 10px;
+}
+.todo-name {
+    margin-right: 10px;
+    max-width: 500px;
+}
+.list {
+    margin-top: 20px;
+}
+
+.todo-buttons {
+    margin-left: 20px;
+}

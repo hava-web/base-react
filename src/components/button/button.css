@@ -1,2 +1,10 @@
 .pb-button {
 }
+
+.pb-button-white {
+    background-color:  blue;
+}
+
+.pb-button-margin {
+    margin-left: 10px;
+}

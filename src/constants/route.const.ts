@@ -6,11 +6,14 @@ export const AppRouteConst = {
   HOME: '/',
   DASHBOARD: '/',
   GUIDE: '/guide',
+  TODO: '/todo',
+  USERS: '/users',
 };
 
 export const AuthRouteConst = {
   AUTH: '/auth',
   LOGIN: '/auth/login',
+  REGISTER: '/auth/register',
 };
 
 export const QUERY_STRING = {

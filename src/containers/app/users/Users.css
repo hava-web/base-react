@@ -1,0 +1,22 @@
+.input {
+    margin: 5px 0 5px 0;
+    width: 200px;
+}
+.user {
+    display: flex;
+}
+.infor {
+    max-width: 150px;
+    width: 200px;
+}
+.button {
+    width: 100;
+}
+.label {
+    width: 50px;
+    max-width: 50px;
+}
+.item {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

@@ -13,6 +13,10 @@ const routes = [
     element: <Login />,
   },
   {
+    path: AuthRouteConst.REGISTER,
+    element: <Login />,
+  },
+  {
     path: ALL_ROUTE_CHAR,
     element: <Page404 />,
   },
