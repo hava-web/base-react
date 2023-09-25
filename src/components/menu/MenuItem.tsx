@@ -22,7 +22,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
   className,
   ...rest
 }) => {
-  console.log('ttt in class', rest?.className);
+  // console.log('ttt in class', rest?.className);
   if (path) {
     return (
       <Link to={path} className="link-item">

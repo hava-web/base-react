@@ -36,7 +36,6 @@ export const updateUser = async (data: any) => {
     })
     .then((res) => {
       value = res.data;
-      console.log(value);
     })
     .catch((err) => console.log(err));
   return value;

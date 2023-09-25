@@ -2,21 +2,17 @@ import React, { memo, useState } from 'react';
 import './Users.css';
 import Button from 'components/button/Button';
 import { useDispatch } from 'react-redux';
-import {
-  deleteUserAction,
-  updateUserAction,
-} from 'store/features/users/usersSlice';
+import { deleteUserAction } from 'store/features/users/usersSlice';
 import { AppDispatch } from 'store';
-import { Form, Icon, Label, Menu, Table } from 'semantic-ui-react';
-import Input from 'components/input/Input';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { SingleUserState, UserInput } from 'models/users.model';
+import { Icon, Menu, Table } from 'semantic-ui-react';
+// import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { SingleUserState } from 'models/users.model';
 import UserModal from './UserModal';
 
 const UserList = ({ users }: any) => {
   const dispatch = useDispatch<AppDispatch>();
-  const { handleSubmit, control, reset } = useForm();
-  const [editId, setEditId] = useState('');
+  // const { handleSubmit, control, reset } = useForm();
+  // const [editId, setEditId] = useState('');
   const [user, setUser] = useState();
   const userFind = user;
   const [open, setOpen] = useState(false);
@@ -37,14 +33,13 @@ const UserList = ({ users }: any) => {
     // Reset the form fields when switching to editing a different item
   };
 
-  const onSubmit: SubmitHandler<any> = (data: UserInput) => {
-    dispatch(updateUserAction(data));
-    setEditId('');
-  };
+  // const onSubmit: SubmitHandler<any> = (data: UserInput) => {
+  //   dispatch(updateUserAction(data));
+  //   setEditId('');
+  // };
 
   const handleCancel = (open: boolean) => {
     setOpen(open);
-    reset(); // Reset the form fields when cancelling the edit
   };
 
   return (
