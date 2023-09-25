@@ -25,7 +25,6 @@ export default function LeftMenu() {
       <Menu vertical={true} fluid={true}>
         {menus.map((item, index) => (
           <MenuItem
-            className="menu-item"
             menuColor={true}
             key={index}
             icon={item.icon}
