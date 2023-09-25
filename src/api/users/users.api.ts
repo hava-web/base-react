@@ -5,7 +5,7 @@ import { UserInput } from 'models/users.model';
 export const showUsers = async () => {
   let value;
   await axios
-    .get(`${CONFIG.REACT_APP_BASE_URL}/api/test/user`)
+    .get(`https://650a7bc6dfd73d1fab086a20.mockapi.io/api/test/user`)
     .then((res) => {
       value = res.data;
     })
@@ -16,7 +16,7 @@ export const showUsers = async () => {
 export const createUser = async (data: UserInput) => {
   let value;
   await axios
-    .post(`${CONFIG.REACT_APP_BASE_URL}/api/test/user`, {
+    .post(`https://650a7bc6dfd73d1fab086a20.mockapi.io/api/test/user`, {
       name: data.name,
       job: data.job,
     })
