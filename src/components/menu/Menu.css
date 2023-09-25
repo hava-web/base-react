@@ -1,0 +1,8 @@
+.link-item{
+    display: flex;
+    justify-content: center;
+}
+
+.pb-menu-color {
+    color: red;
+}

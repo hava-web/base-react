@@ -7,23 +7,34 @@ import {
   updateUserAction,
 } from 'store/features/users/usersSlice';
 import { AppDispatch } from 'store';
-import { Form, Label } from 'semantic-ui-react';
+import { Form, Icon, Label, Menu, Table } from 'semantic-ui-react';
 import Input from 'components/input/Input';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { SingleUserState, UserInput } from 'models/users.model';
+import UserModal from './UserModal';
 
 const UserList = ({ users }: any) => {
   const dispatch = useDispatch<AppDispatch>();
   const { handleSubmit, control, reset } = useForm();
   const [editId, setEditId] = useState('');
+  const [user, setUser] = useState();
+  const userFind = user;
+  const [open, setOpen] = useState(false);
+  const status = open;
 
   const deleteUser = (id: string) => {
     dispatch(deleteUserAction(id));
   };
 
   const updateUser = (id: string) => {
-    setEditId(id);
-    reset(); // Reset the form fields when switching to editing a different item
+    // setEditId(id);
+    const userFind = users.find((user: SingleUserState) => user.id === id);
+    if (userFind) {
+      setUser(userFind);
+    }
+    setOpen(true);
+
+    // Reset the form fields when switching to editing a different item
   };
 
   const onSubmit: SubmitHandler<any> = (data: UserInput) => {
@@ -31,8 +42,8 @@ const UserList = ({ users }: any) => {
     setEditId('');
   };
 
-  const handleCancel = () => {
-    setEditId('');
+  const handleCancel = (open: boolean) => {
+    setOpen(open);
     reset(); // Reset the form fields when cancelling the edit
   };
 
@@ -41,70 +52,22 @@ const UserList = ({ users }: any) => {
       <h1>This is my user list</h1>
       {users.length ? (
         <div>
-          <ul>
-            {users.map((user: SingleUserState) => (
-              <li key={user.id} className="item">
-                {editId === user.id ? (
-                  <div>
-                    <Form onSubmit={handleSubmit(onSubmit)} className="form">
-                      <Controller
-                        name="name"
-                        control={control}
-                        rules={{ required: 'Name is required' }}
-                        defaultValue={user.name}
-                        render={({ field }) => (
-                          <>
-                            <Label className="label">Name</Label>
-                            <Input
-                              className="input"
-                              {...field}
-                              value={field.value || ''}
-                              ref={null}
-                            />
-                            {/* {errors.name && <span>{errors.name.message}</span>} */}
-                          </>
-                        )}
-                      />
-                      <Controller
-                        name="job"
-                        control={control}
-                        rules={{ required: 'Job is required' }}
-                        defaultValue={user.job}
-                        render={({ field }) => (
-                          <>
-                            <Label className="label">Job</Label>
-                            <Input
-                              className="input"
-                              {...field}
-                              value={field.value || ''}
-                              ref={null}
-                            />
-                            {/* {errors.job && <span>{errors.job.message}</span>} */}
-                          </>
-                        )}
-                      />
-                      <Controller
-                        name="id"
-                        control={control}
-                        defaultValue={user.id}
-                        render={({ field }) => <Input type={'hidden'} />}
-                      />
-                      <div className="button">
-                        <Button type="submit" color="linkedin">
-                          Edit
-                        </Button>
-                        <Button color="youtube" onClick={handleCancel}>
-                          Cancel
-                        </Button>
-                      </div>
-                    </Form>
-                  </div>
-                ) : (
-                  <div className="user">
-                    <div className="user infor">
-                      <div className="">{user.id}</div>
-                      <div className="">{user.name}</div>
-                    </div>
+          <Table celled>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell textAlign="center">ID</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center">NAME</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center">JOB</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center">ACTION</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {users.map((user: SingleUserState) => (
+                <Table.Row key={user.id}>
+                  <Table.Cell textAlign="center">{user.id}</Table.Cell>
+                  <Table.Cell textAlign="center">{user.name}</Table.Cell>
+                  <Table.Cell textAlign="center">{user.job}</Table.Cell>
+                  <Table.Cell textAlign="center" width={2}>
                     <div className="button user">
                       <Button
                         color="facebook"
@@ -119,11 +82,34 @@ const UserList = ({ users }: any) => {
                         Delete
                       </Button>
                     </div>
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
+                  </Table.Cell>
+                </Table.Row>
+              ))}
+              <UserModal
+                status={status}
+                user={userFind}
+                handleCancel={handleCancel}
+              />
+            </Table.Body>
+            <Table.Footer>
+              <Table.Row>
+                <Table.HeaderCell colSpan="4">
+                  <Menu floated="right" pagination>
+                    <Menu.Item as="a" icon>
+                      <Icon name="chevron left" />
+                    </Menu.Item>
+                    <Menu.Item as="a">1</Menu.Item>
+                    <Menu.Item as="a">2</Menu.Item>
+                    <Menu.Item as="a">3</Menu.Item>
+                    <Menu.Item as="a">4</Menu.Item>
+                    <Menu.Item as="a" icon>
+                      <Icon name="chevron right" />
+                    </Menu.Item>
+                  </Menu>
+                </Table.HeaderCell>
+              </Table.Row>
+            </Table.Footer>
+          </Table>
         </div>
       ) : (
         <div>Loading</div>

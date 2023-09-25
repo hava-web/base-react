@@ -12,21 +12,54 @@
 .button {
     width: 100;
 }
+.button-edit{
+    width: 100;
+    float: right;
+    margin-bottom: 10px;
+}
+.form-edit{
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-edit .item-edit{
+    display: inline-block;
+    width: 50%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.form-edit .item-edit .edit-label {
+    padding-top: 15px;
+    padding-bottom: 14px;
+    margin-right: 5px;
+}
+.form-edit .item-edit .input-edit {
+    width: 250px;
+}
+.input-hidden{
+    width: 0;
+}
 .label {
     width: 50px;
     max-width: 50px;
 }
+
 .item {
     margin-top: 5px;
     margin-bottom: 5px;
 }
- 
-.segment {
+
+.segment-form {
     width: 600px;
+    flex-wrap: wrap;
 }
 .add-input {
     display: flex;
 }
+
 
 .add-input .add-label{
     padding-top: 15px;
@@ -38,10 +71,17 @@
     margin-right: 10px;
 }
 
-.add-button {
-    margin-left: 10px;
+.edit-label {
+    padding: 20px;
 }
 
-.add-input .item .error-message {
+.add-button {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.add-input .error-message {
     color: red;
+    margin-bottom: 5px;
+    margin-left: 10px;
 }

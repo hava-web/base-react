@@ -1,8 +1,8 @@
 import React from 'react';
-import './left-menu.css';
 import MenuItem from 'components/menu/MenuItem';
 import Menu from 'components/menu/Menu';
 import { AppRouteConst } from 'constants/route.const';
+import './left-menu.css';
 
 const menus = [
   {
@@ -24,7 +24,14 @@ export default function LeftMenu() {
     <ul className="left-menu">
       <Menu vertical={true} fluid={true}>
         {menus.map((item, index) => (
-          <MenuItem key={index} icon={item.icon} link={true} path={item.path} />
+          <MenuItem
+            className="menu-item"
+            menuColor={true}
+            key={index}
+            icon={item.icon}
+            link={true}
+            path={item.path}
+          />
         ))}
       </Menu>
     </ul>

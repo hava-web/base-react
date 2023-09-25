@@ -37,18 +37,20 @@ function Users() {
 
   return (
     <div>
-      <h1>Add User</h1>
+      <h1>ADD USER</h1>
       <Form onSubmit={handleSubmit(onSubmit)} className="">
-        <Segment className="segment">
+        <Segment className="segment-form">
           <div className="add-input">
             <Controller
               name="name"
               control={control}
               rules={{ required: 'Name is required' }}
               render={({ field }) => (
-                <div className="item">
-                  <Label className="add-label">Name</Label>
-                  <Input {...field} ref={null} />
+                <div>
+                  <div className="item">
+                    <Label className="add-label">Name</Label>
+                    <Input {...field} ref={null} />
+                  </div>
                   {errors.name && (
                     <span className="error-message">{errors.name.message}</span>
                   )}
@@ -61,9 +63,11 @@ function Users() {
               control={control}
               rules={{ required: 'Job is required' }}
               render={({ field }) => (
-                <div className="item">
-                  <Label className="add-label">Job</Label>
-                  <Input {...field} ref={null} />
+                <div>
+                  <div className="item">
+                    <Label className="add-label">Job</Label>
+                    <Input {...field} ref={null} />
+                  </div>
                   {errors.job && (
                     <span className="error-message">{errors.job.message}</span>
                   )}
