@@ -83,6 +83,7 @@ function Users() {
         </Segment>
       </Form>
       <UserList users={users} />
+      <div className="space" />
     </div>
   );
 }

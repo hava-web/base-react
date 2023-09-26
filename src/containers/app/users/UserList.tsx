@@ -29,8 +29,6 @@ const UserList = ({ users }: any) => {
       setUser(userFind);
     }
     setOpen(true);
-
-    // Reset the form fields when switching to editing a different item
   };
 
   // const onSubmit: SubmitHandler<any> = (data: UserInput) => {

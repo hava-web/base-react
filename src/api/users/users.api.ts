@@ -30,10 +30,13 @@ export const createUser = async (data: UserInput) => {
 export const updateUser = async (data: any) => {
   let value;
   await axios
-    .put(`${CONFIG.REACT_APP_BASE_URL}/api/test/user/${data.id}`, {
-      name: data.name,
-      job: data.job,
-    })
+    .put(
+      `https://650a7bc6dfd73d1fab086a20.mockapi.io/api/test/user/${data.id}`,
+      {
+        name: data.name,
+        job: data.job,
+      },
+    )
     .then((res) => {
       value = res.data;
     })
@@ -44,7 +47,7 @@ export const updateUser = async (data: any) => {
 export const deleteUser = async (id: string) => {
   let value;
   await axios
-    .delete(`${CONFIG.REACT_APP_BASE_URL}/api/test/user/${id}`)
+    .delete(`https://650a7bc6dfd73d1fab086a20.mockapi.io/api/test/user/${id}`)
     .then((res) => {
       value = res.data;
     })
