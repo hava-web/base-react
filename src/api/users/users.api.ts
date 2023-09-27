@@ -1,5 +1,5 @@
 import axios from 'axios';
-import CONFIG from 'config';
+// import CONFIG from 'config';
 import { UserInput } from 'models/users.model';
 
 export const showUsers = async () => {
