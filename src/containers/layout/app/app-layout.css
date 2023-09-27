@@ -13,9 +13,10 @@
 }
 
 .left-menu-section {
-  width: 100px;
+  width: 55px;
   flex-shrink: 0;
   border-right: 1px solid #e5e7eb;
+  background-color: #0f172a;
 }
 
 .main-section {

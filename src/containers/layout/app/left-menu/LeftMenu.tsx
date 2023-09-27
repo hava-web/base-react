@@ -22,7 +22,7 @@ const menus = [
 export default function LeftMenu() {
   return (
     <ul className="left-menu">
-      <Menu vertical={true} fluid={true}>
+      <Menu vertical={true} fluid={true} className="menu-list">
         {menus.map((item, index) => (
           <MenuItem
             menuColor

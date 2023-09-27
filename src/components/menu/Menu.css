@@ -1,12 +1,20 @@
 .link-item {
   display: flex;
   justify-content: center;
-  border-bottom: rgb(183 178 178) 1px solid;
+}
+.link-item:hover {
+  background-color: #fff;
+}
+a.header.item.menu-item {
+  background-color: #0f172a;
+  width: 55px;
 }
 
 .icon.link.item.menu-item.pb-menu-color {
   width: 100%;
   margin: 0;
   display: flex;
+  background-color: #0f172a;
+  color: #fff;
   justify-content: center;
 }

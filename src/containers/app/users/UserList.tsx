@@ -4,45 +4,88 @@ import Button from 'components/button/Button';
 import { useDispatch } from 'react-redux';
 import { deleteUserAction } from 'store/features/users/usersSlice';
 import { AppDispatch } from 'store';
-import { Icon, Menu, Table } from 'semantic-ui-react';
-// import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import {
+  Header,
+  Icon,
+  Modal,
+  Pagination,
+  PaginationProps,
+  Table,
+} from 'semantic-ui-react';
 import { SingleUserState } from 'models/users.model';
+import Input from 'components/input/Input';
 import UserModal from './UserModal';
 
 const UserList = ({ users }: any) => {
   const dispatch = useDispatch<AppDispatch>();
-  // const { handleSubmit, control, reset } = useForm();
-  // const [editId, setEditId] = useState('');
+  const [cancel, setCancel] = useState(false);
+  const [userCancel, setUserCancel] = useState('');
   const [user, setUser] = useState();
+  const [searchText, setSearchText] = useState('');
+  const [activePage, setActivePage] = useState<any>(1);
+  const filterUser = users.filter((users: SingleUserState) => {
+    const lowerCaseName = users.name.toLowerCase();
+    const lowerCaseJob = users.job.toLowerCase();
+    const lowerCaseSearch = searchText.toLowerCase();
+    return (
+      lowerCaseName.includes(lowerCaseSearch) ||
+      lowerCaseJob.includes(lowerCaseSearch)
+    );
+  });
+  const dataPerPage = 5;
+  const totalPages = Math.ceil(filterUser.length / dataPerPage);
+  const startIndex = (activePage - 1) * dataPerPage;
+  const endIndex = startIndex + dataPerPage;
   const userFind = user;
   const [open, setOpen] = useState(false);
   const status = open;
 
   const deleteUser = (id: string) => {
-    dispatch(deleteUserAction(id));
+    setCancel(true);
+    setUserCancel(id);
   };
 
+  const handleDeleteUser = (id: string) => {
+    dispatch(deleteUserAction(id));
+    setCancel(false);
+    setUserCancel('');
+  };
+
+  const handlePageChange = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    data: PaginationProps,
+  ) => {
+    const { activePage } = data;
+    setActivePage(activePage);
+  };
   const updateUser = (id: string) => {
-    // setEditId(id);
     const userFind = users.find((user: SingleUserState) => user.id === id);
     if (userFind) {
       setUser(userFind);
     }
     setOpen(true);
   };
-
-  // const onSubmit: SubmitHandler<any> = (data: UserInput) => {
-  //   dispatch(updateUserAction(data));
-  //   setEditId('');
-  // };
-
   const handleCancel = (open: boolean) => {
     setOpen(open);
   };
-
   return (
     <>
-      <h1>This is my user list</h1>
+      <div className="flex my-2 mt-3">
+        <h1 className="tittle-user w-full">
+          <Icon name="users" />
+          <div className="title">USER LIST</div>
+        </h1>
+        <Input
+          icon={'search'}
+          className="float-end"
+          value={searchText}
+          onChange={(e, { value }) => {
+            setActivePage(1);
+            setSearchText(value);
+          }}
+          placeholder="Search..."
+        />
+      </div>
       {users.length ? (
         <div>
           <Table celled>
@@ -55,57 +98,77 @@ const UserList = ({ users }: any) => {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {users.map((user: SingleUserState) => (
-                <Table.Row key={user.id}>
-                  <Table.Cell textAlign="center">{user.id}</Table.Cell>
-                  <Table.Cell textAlign="center">{user.name}</Table.Cell>
-                  <Table.Cell textAlign="center">{user.job}</Table.Cell>
-                  <Table.Cell textAlign="center" width={2}>
-                    <div className="button user">
-                      <Button
-                        color="facebook"
-                        onClick={() => updateUser(user.id)}
-                      >
-                        Update
-                      </Button>
-                      <Button
-                        color="youtube"
-                        onClick={() => deleteUser(user.id)}
-                      >
-                        Delete
-                      </Button>
-                    </div>
-                  </Table.Cell>
-                </Table.Row>
-              ))}
+              {filterUser
+                .slice(startIndex, endIndex)
+                .map((user: SingleUserState) => (
+                  <Table.Row key={user.id}>
+                    <Table.Cell textAlign="center">{user.id}</Table.Cell>
+                    <Table.Cell textAlign="center">{user.name}</Table.Cell>
+                    <Table.Cell textAlign="center">{user.job}</Table.Cell>
+                    <Table.Cell textAlign="center" width={2}>
+                      <div className="button user">
+                        <Button
+                          color="facebook"
+                          onClick={() => updateUser(user.id)}
+                        >
+                          Update
+                        </Button>
+                        <Button
+                          color="youtube"
+                          onClick={() => {
+                            deleteUser(user.id);
+                          }}
+                        >
+                          Delete
+                        </Button>
+                      </div>
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
               <UserModal
                 status={status}
                 user={userFind}
                 handleCancel={handleCancel}
               />
+              <Modal open={cancel}>
+                <Header icon="archive" content="Confirm delete" />
+                <Modal.Content>
+                  <p>Are you sure you want to delete user {userCancel} ?</p>
+                </Modal.Content>
+                <Modal.Actions>
+                  <Button color="red" onClick={() => setCancel(false)}>
+                    <Icon name="remove" /> No
+                  </Button>
+                  <Button
+                    color="green"
+                    onClick={() => handleDeleteUser(userCancel)}
+                  >
+                    <Icon name="checkmark" /> Yes
+                  </Button>
+                </Modal.Actions>
+              </Modal>
             </Table.Body>
             <Table.Footer>
               <Table.Row>
                 <Table.HeaderCell colSpan="4">
-                  <Menu floated="right" pagination>
-                    <Menu.Item as="a" icon>
-                      <Icon name="chevron left" />
-                    </Menu.Item>
-                    <Menu.Item as="a">1</Menu.Item>
-                    <Menu.Item as="a">2</Menu.Item>
-                    <Menu.Item as="a">3</Menu.Item>
-                    <Menu.Item as="a">4</Menu.Item>
-                    <Menu.Item as="a" icon>
-                      <Icon name="chevron right" />
-                    </Menu.Item>
-                  </Menu>
+                  <div className="float-right">
+                    <Pagination
+                      defaultActivePage={1}
+                      totalPages={totalPages}
+                      boundaryRange={1}
+                      siblingRange={1}
+                      onPageChange={handlePageChange}
+                    />
+                  </div>
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Footer>
           </Table>
         </div>
       ) : (
-        <div>Loading</div>
+        <div className="display-loader">
+          <span className="loader" />
+        </div>
       )}
     </>
   );

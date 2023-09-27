@@ -1,91 +1,143 @@
 .input {
-    margin: 5px 0 5px 0;
-    width: 200px;
+  margin: 5px 0 5px 0;
+  width: 200px;
 }
 .user {
-    display: flex;
+  display: flex;
 }
 .infor {
-    max-width: 150px;
-    width: 200px;
+  max-width: 150px;
+  width: 200px;
 }
 .button {
-    width: 100;
+  width: 100;
 }
-.button-edit{
-    width: 100;
-    float: right;
-    margin-bottom: 10px;
+.button-edit {
+  width: 100;
+  float: right;
+  margin-bottom: 10px;
 }
-.form-edit{
-    display: flex;
-    margin-bottom: 10px;
-    align-items: center;
-    justify-content: center;
+.form-edit {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
-.form-edit .item-edit{
-    display: inline-block;
-    width: 50%;
-    margin-left: 10px;
-    margin-right: 10px;
+.form-edit .item-edit {
+  display: inline-block;
+  width: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .form-edit .item-edit .edit-label {
-    padding-top: 15px;
-    padding-bottom: 14px;
-    margin-right: 5px;
+  padding-top: 15px;
+  padding-bottom: 14px;
+  margin-right: 5px;
 }
 .form-edit .item-edit .input-edit {
-    width: 250px;
+  width: 250px;
 }
-.input-hidden{
-    width: 0;
+.input-hidden {
+  width: 0;
 }
 .label {
-    width: 50px;
-    max-width: 50px;
+  width: 50px;
+  max-width: 50px;
 }
 
 .item {
-    margin-top: 5px;
-    margin-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .segment-form {
-    width: 600px;
-    flex-wrap: wrap;
+  width: 600px;
+  flex-wrap: wrap;
 }
 .add-input {
-    display: flex;
+  display: flex;
 }
 
-
-.add-input .add-label{
-    padding-top: 15px;
-    padding-bottom: 10px;
+.add-input .add-label {
+  padding-top: 15px;
+  padding-bottom: 10px;
 }
 
 .add-input .item {
-    margin-left: 10px;
-    margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .edit-label {
-    padding: 20px;
+  padding: 20px;
 }
 
 .add-button {
-    margin-left: 10px;
-    margin-top: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
 .add-input .error-message {
-    color: red;
-    margin-bottom: 5px;
-    margin-left: 10px;
+  color: red;
+  margin-bottom: 5px;
+  margin-left: 10px;
 }
 
 .space {
-    height: 100px;
+  height: 100px;
+}
+.tittle-user {
+  display: flex;
+  align-items: center;
+}
+.tittle-user .title {
+  margin-left: 10px;
+}
+
+/* Loader */
+.display-loader {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-bottom-color: #0004ff;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Search */
+.ui.icon.input.pb-input.text-pb-h1.float-end {
+  width: 350px;
 }

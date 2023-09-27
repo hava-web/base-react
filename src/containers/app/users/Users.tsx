@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import withAuthenticate from 'hoc/withAuthenticate';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import Input from 'components/input/Input';
-import { Button, Label, Form, Segment } from 'semantic-ui-react';
+import { Button, Label, Form, Segment, Icon } from 'semantic-ui-react';
 import { UserInput } from 'models/users.model';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from 'store';
@@ -37,7 +37,10 @@ function Users() {
 
   return (
     <div>
-      <h1>ADD USER</h1>
+      <h1 className="tittle-user">
+        <Icon name="add user" />
+        <div className="title">ADD USER</div>
+      </h1>
       <Form onSubmit={handleSubmit(onSubmit)} className="">
         <Segment className="segment-form">
           <div className="add-input">

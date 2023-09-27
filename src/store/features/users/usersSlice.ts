@@ -56,7 +56,7 @@ export const usersSlice = createSlice({
       createUserAction.fulfilled,
       (state, action: PayloadAction<any>) => {
         console.log('Create Fullfilled');
-        state.users.unshift(action.payload);
+        state.users.push(action.payload);
       },
     );
     builder.addCase(deleteUserAction.pending, (state, action) => {
