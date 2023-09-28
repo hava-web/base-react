@@ -11,7 +11,12 @@ import Input from 'components/input/Input';
 
 const UserModal = ({ status, user, handleCancel }: any) => {
   const userFind = user;
-  const { handleSubmit, control, reset } = useForm();
+  const {
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors },
+  } = useForm();
   const dispatch = useDispatch<AppDispatch>();
   const onSubmit: SubmitHandler<any> = (data: UserInput) => {
     dispatch(updateUserAction(data));
@@ -39,14 +44,20 @@ const UserModal = ({ status, user, handleCancel }: any) => {
                 render={({ field }) => (
                   <>
                     <div className="item-edit">
-                      <Label className="edit-label">Name</Label>
-                      <Input
-                        className="input-edit"
-                        {...field}
-                        value={field.value || ''}
-                        ref={null}
-                      />
-                      {/* {errors.name && <span>{errors.name.message}</span>} */}
+                      <div className="item">
+                        <Label className="edit-label">Name</Label>
+                        <Input
+                          className="input-edit"
+                          {...field}
+                          value={field.value || ''}
+                          ref={null}
+                        />
+                      </div>
+                      {errors.name && (
+                        <span className="error-message">
+                          {errors.name.message as string}
+                        </span>
+                      )}
                     </div>
                   </>
                 )}
@@ -59,14 +70,20 @@ const UserModal = ({ status, user, handleCancel }: any) => {
                 render={({ field }) => (
                   <>
                     <div className="item-edit">
-                      <Label className="edit-label">Job</Label>
-                      <Input
-                        className="input-edit"
-                        {...field}
-                        value={field.value || ''}
-                        ref={null}
-                      />
-                      {/* {errors.job && <span>{errors.job.message}</span>} */}
+                      <div className="item">
+                        <Label className="edit-label">Job</Label>
+                        <Input
+                          className="input-edit"
+                          {...field}
+                          value={field.value || ''}
+                          ref={null}
+                        />
+                      </div>
+                      {errors.job && (
+                        <span className="error-message">
+                          {errors.job.message as string}
+                        </span>
+                      )}
                     </div>
                   </>
                 )}
